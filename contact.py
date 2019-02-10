@@ -1,22 +1,24 @@
 
-class Contact_main_info:
+class Info:
 
-    def __init__(self, firstname, middlename, lastname, nickname, title, company, address, home, mobile, work, email, email2, email3, homepage):
+    def __init__(self, firstname, middlename, lastname, nick, title, cname, address, homedid, cellular, workdid, fax, email, email2, email3, website, address2, home, notes, byear, ayear):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
-        self.nickname = nickname
+        self.nick = nick
         self.title = title
-        self.company = company
+        self.cname = cname
         self.address = address
-        self.home = home
-        self.mobile = mobile
-        self.work = work
+        self.homedid = homedid
+        self.cellular = cellular
+        self.workdid = workdid
+        self.fax = fax
         self.email = email
         self.email2 = email2
         self.email3 = email3
-        self.homepage = homepage
-        self.lastname = lastname
-        self.lastname = lastname
-        self.lastname = lastname
-
+        self.website = website
+        self.address2 = address2
+        self.home = home
+        self.notes = notes
+        self.byear = byear
+        self.ayear = ayear
