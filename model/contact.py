@@ -1,7 +1,7 @@
 
 class Info:
 
-    def __init__(self, firstname, middlename, lastname, nick, title, cname, address, homedid, cellular, workdid, fax, email, email2, email3, website, address2, home, notes):
+    def __init__(self, firstname=None, middlename=None, lastname=None, nick=None, title=None, cname=None, address=None, homedid=None, cellular=None, workdid=None, fax=None, email=None, email2=None, email3=None, website=None, address2=None, home=None, notes=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
