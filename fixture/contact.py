@@ -9,6 +9,7 @@ class ContactHelper:
 
 
     def create(self, info):
+        self.app.return_to_home()
         wd = self.app.wd
         # init contact creation
         wd.find_element_by_link_text("add new").click()
@@ -17,9 +18,11 @@ class ContactHelper:
         # submit contact creation
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_to_home()
+        # wd.find_element_by_name("selected[]")
 
 
     def modify(self, info):
+        self.app.return_to_home()
         wd = self.app.wd
         # select first contact
         wd.find_element_by_name("selected[]").click()
@@ -82,25 +85,25 @@ class ContactHelper:
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys(info.website)
         # choose birthday and anniversary day
-        wd.find_element_by_name("bday").click()
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text("15")
-        wd.find_element_by_xpath("//option[@value='15']").click()
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text("November")
-        wd.find_element_by_xpath("//option[@value='November']").click()
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(info.byear)
-        wd.find_element_by_name("aday").click()
-        Select(wd.find_element_by_name("aday")).select_by_visible_text("13")
-        wd.find_element_by_xpath("(//option[@value='13'])[2]").click()
-        wd.find_element_by_name("amonth").click()
-        Select(wd.find_element_by_name("amonth")).select_by_visible_text("August")
-        wd.find_element_by_xpath("(//option[@value='August'])[2]").click()
-        wd.find_element_by_name("ayear").click()
-        wd.find_element_by_name("ayear").clear()
-        wd.find_element_by_name("ayear").send_keys(info.ayear)
+        # wd.find_element_by_name("bday").click()
+        # wd.find_element_by_name("bday").click()
+        # Select(wd.find_element_by_name("bday")).select_by_visible_text("15")
+        # wd.find_element_by_xpath("//option[@value='15']").click()
+        # wd.find_element_by_name("bmonth").click()
+        # Select(wd.find_element_by_name("bmonth")).select_by_visible_text("November")
+        # wd.find_element_by_xpath("//option[@value='November']").click()
+        # wd.find_element_by_name("byear").click()
+        # wd.find_element_by_name("byear").clear()
+        # wd.find_element_by_name("byear").send_keys(info.byear)
+        # wd.find_element_by_name("aday").click()
+        # Select(wd.find_element_by_name("aday")).select_by_visible_text("13")
+        # wd.find_element_by_xpath("(//option[@value='13'])[2]").click()
+        # wd.find_element_by_name("amonth").click()
+        # Select(wd.find_element_by_name("amonth")).select_by_visible_text("August")
+        # wd.find_element_by_xpath("(//option[@value='August'])[2]").click()
+        # wd.find_element_by_name("ayear").click()
+        # wd.find_element_by_name("ayear").clear()
+        # wd.find_element_by_name("ayear").send_keys(info.ayear)
         # fill in secondary info
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
@@ -114,6 +117,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.return_to_home()
         # select first contact
         wd.find_element_by_name("selected[]").click()
         # submit contact deletion
