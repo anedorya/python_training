@@ -29,7 +29,8 @@ class Application:
 
     def return_to_home(self):
         wd = self.wd
-        wd.find_element_by_link_text("home").click()
+        if not (wd.current_url.endswith("/addressbook/")):
+            wd.find_element_by_link_text("home").click()
 
     def destroy(self):
         wd = self.wd
