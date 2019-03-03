@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from model.contact import Info
 
 class ContactHelper:
 
@@ -104,3 +105,31 @@ class ContactHelper:
         wd = self.app.wd
         self.app.return_to_home()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.app.return_to_home()
+        contacts = []
+
+
+        for element in wd.find_elements_by_css_selector("tr[name='entry']"):
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            cells = element.find_elements_by_tag_name("td")
+            l_name = cells[1].text
+            f_name = cells[2].text
+            contacts.append(Info(firstname=f_name, lastname=l_name, id=id))
+        return contacts
+
+#        for element in wd.find_elements_by_css_selector("tr[name='entry']"):
+#            text = element.text
+#            cells = element.find_element_by_tag_name("td"[2]).text
+#            id = element.find_element_by_name("selected[]").get_attribute("value")
+#            contacts.append(Info(firstname=text, lastname=cells, id=id))
+#        return contacts
+
+#            text = element.find_elements_by_tag_name("td")
+#    find_element_by_css_selector("table>tbody>tr>td[name='ContractDesc']").click()
+#id = element.find_element_by_name("id").get_attribute("value")
+#            firstname = element.find_element_by_name("firstname").get_attribute("value")
+#            lastname = element.find_element_by_name("lastname").get_attribute("value")
+# , lastname=lastname, id=id
