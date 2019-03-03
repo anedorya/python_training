@@ -34,3 +34,4 @@ class Info:
             return int(self.id)
         else:
             return maxsize
+
