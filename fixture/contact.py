@@ -22,19 +22,27 @@ class ContactHelper:
         # wd.find_element_by_name("selected[]")
         self.contact_cache = None
 
+    def modify(self):
+        self.modify_contact_by_index(0)
 
-    def modify(self, info):
-        self.app.return_to_home()
+    def modify_contact_by_index(self, index, info):
         wd = self.app.wd
+        self.app.return_to_home()
         # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         # fill in personal info
         self.fill_info(info)
         # confirm changes
         wd.find_element_by_name("update").click()
+        wd.find_elements_by_css_selector("div.msgbox")
         self.app.return_to_home()
         self.contact_cache = None
+
+
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
 
 
     def change_field_value(self, field_name, text):
@@ -91,15 +99,20 @@ class ContactHelper:
         self.change_field_value("phone2", info.home)
         self.change_field_value("notes", info.notes)
 
+
+
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.return_to_home()
-        # select first contact
-        wd.find_element_by_name("selected[]").click()
+        self.select_contact_by_index(index)
         # submit contact deletion
-        # self.accept_next_alert = True
         wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # self.accept_next_alert = True
         wd.switch_to_alert().accept()
+        wd.find_elements_by_css_selector("div.msgbox")
         self.contact_cache = None
 
     def count(self):
