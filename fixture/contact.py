@@ -30,7 +30,7 @@ class ContactHelper:
         self.app.return_to_home()
         # select first contact
         self.select_contact_by_index(index)
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        self.click_selected_contact(index)
         # fill in personal info
         self.fill_info(info)
         # confirm changes
@@ -39,10 +39,15 @@ class ContactHelper:
         self.app.return_to_home()
         self.contact_cache = None
 
-
     def select_contact_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
+
+    def click_selected_contact(self, index):
+         wd = self.app.wd
+         row = wd.find_elements_by_css_selector("tr[name='entry']")[index]
+         cell = row.find_elements_by_tag_name("td")[7]
+         cell.find_element_by_tag_name("a").click()
 
 
     def change_field_value(self, field_name, text):
