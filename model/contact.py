@@ -5,7 +5,7 @@ class Info:
     def __init__(self, firstname=None, middlename=None, lastname=None, id=None, nick=None, title=None, cname=None,
                  address=None, homedid=None, cellular=None, workdid=None, fax=None, email=None, email2=None,
                  email3=None, website=None, address2=None, secondaryphone=None, notes=None,
-                 all_phones_from_home_page=None):
+                 all_phones_from_home_page=None, all_emails_from_home_page=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -26,6 +26,7 @@ class Info:
         self.notes = notes
         self.id = id
         self.all_phones_from_home_page = all_phones_from_home_page
+        self.all_emails_from_home_page = all_emails_from_home_page
 
 
     def __repr__(self):
