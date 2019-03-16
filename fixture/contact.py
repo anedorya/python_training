@@ -2,7 +2,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from model.contact import Info
-
+import re
 
 class ContactHelper:
     def __init__(self, app):
@@ -25,13 +25,11 @@ class ContactHelper:
     def modify(self):
         self.modify_contact_by_index(0)
 
+
+
     def modify_contact_by_index(self, index, info):
         wd = self.app.wd
-        self.app.return_to_home()
-        # select first contact
-        self.select_contact_by_index(index)
-        self.click_selected_contact(index)
-        # fill in personal info
+        self.open_contact_to_edit_by_index(index)
         self.fill_info(info)
         # confirm changes
         wd.find_element_by_name("update").click()
@@ -43,12 +41,19 @@ class ContactHelper:
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
 
-    def click_selected_contact(self, index):
+    def open_contact_to_edit_by_index(self, index):
          wd = self.app.wd
-         row = wd.find_elements_by_css_selector("tr[name='entry']")[index]
+         self.app.return_to_home()
+         row = wd.find_elements_by_name("entry")[index]
          cell = row.find_elements_by_tag_name("td")[7]
          cell.find_element_by_tag_name("a").click()
 
+    def open_contact_to_view_by_index(self, index):
+         wd = self.app.wd
+         self.app.return_to_home()
+         row = wd.find_elements_by_name("entry")[index]
+         cell = row.find_elements_by_tag_name("td")[6]
+         cell.find_element_by_tag_name("a").click()
 
     def change_field_value(self, field_name, text):
         wd = self.app.wd
@@ -101,7 +106,7 @@ class ContactHelper:
         # fill in secondary info
 
         self.change_field_value("address2", info.address2)
-        self.change_field_value("phone2", info.home)
+        self.change_field_value("phone2", info.secondaryphone)
         self.change_field_value("notes", info.notes)
 
 
@@ -137,6 +142,35 @@ class ContactHelper:
                 cells = element.find_elements_by_tag_name("td")
                 l_name = cells[1].text
                 f_name = cells[2].text
-                self.contact_cache.append(Info(firstname=f_name, lastname=l_name, id=id))
+                all_phones = cells[5].text
+                self.contact_cache.append(Info(firstname=f_name, lastname=l_name, id=id,
+                                               all_phones_from_home_page=all_phones))
         return list(self.contact_cache)
+
+
+
+    def get_contact_info_from_edit_page(self, index):
+        wd = self.app.wd
+        self.open_contact_to_edit_by_index(index)
+        firstname = wd.find_element_by_name("firstname").get_attribute("value")
+        lastname = wd.find_element_by_name("lastname").get_attribute("value")
+        id = wd.find_element_by_name("id").get_attribute("value")
+        homedid = wd.find_element_by_name("home").get_attribute("value")
+        workdid = wd.find_element_by_name("work").get_attribute("value")
+        cellular = wd.find_element_by_name("mobile").get_attribute("value")
+        secondaryphone = wd.find_element_by_name("phone2").get_attribute("value")
+        return Info(firstname=firstname, lastname=lastname, id=id, homedid=homedid, workdid=workdid,
+                       cellular=cellular, secondaryphone=secondaryphone)
+
+
+    def get_contact_from_view_page(self, index):
+        wd = self.app.wd
+        self.open_contact_to_view_by_index(index)
+        text = wd.find_element_by_id("content").text
+        homedid = re.search("H: (.*)", text).group(1)
+        workdid = re.search("W: (.*)", text).group(1)
+        cellular = re.search("M: (.*)", text).group(1)
+        secondaryphone = re.search("P: (.*)", text).group(1)
+        return Info(homedid=homedid, workdid=workdid,
+                    cellular=cellular, secondaryphone=secondaryphone)
 

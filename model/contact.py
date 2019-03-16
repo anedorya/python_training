@@ -2,7 +2,10 @@ from sys import maxsize
 
 class Info:
 
-    def __init__(self, firstname=None, middlename=None, lastname=None, nick=None, title=None, cname=None, address=None, homedid=None, cellular=None, workdid=None, fax=None, email=None, email2=None, email3=None, website=None, address2=None, home=None, notes=None, id=None):
+    def __init__(self, firstname=None, middlename=None, lastname=None, id=None, nick=None, title=None, cname=None,
+                 address=None, homedid=None, cellular=None, workdid=None, fax=None, email=None, email2=None,
+                 email3=None, website=None, address2=None, secondaryphone=None, notes=None,
+                 all_phones_from_home_page=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -19,9 +22,11 @@ class Info:
         self.email3 = email3
         self.website = website
         self.address2 = address2
-        self.home = home
+        self.secondaryphone = secondaryphone
         self.notes = notes
         self.id = id
+        self.all_phones_from_home_page = all_phones_from_home_page
+
 
     def __repr__(self):
         return "%s:%s:%s" % (self.id, self.firstname, self.lastname)
