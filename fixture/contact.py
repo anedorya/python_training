@@ -37,9 +37,24 @@ class ContactHelper:
         self.app.return_to_home()
         self.contact_cache = None
 
+
+    def modify_contact_by_id(self, id, info):
+        wd = self.app.wd
+        self.open_contact_to_edit_by_id(id)
+        self.fill_info(info)
+        # confirm changes
+        wd.find_element_by_name("update").click()
+        wd.find_elements_by_css_selector("div.msgbox")
+        self.app.return_to_home()
+        self.contact_cache = None
+
     def select_contact_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
+
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
 
     def open_contact_to_edit_by_index(self, index):
          wd = self.app.wd
@@ -47,6 +62,16 @@ class ContactHelper:
          row = wd.find_elements_by_name("entry")[index]
          cell = row.find_elements_by_tag_name("td")[7]
          cell.find_element_by_tag_name("a").click()
+
+
+    def open_contact_to_edit_by_id(self, id):
+         wd = self.app.wd
+         self.app.return_to_home()
+         wd.find_element_by_css_selector("a[href='edit.php?id=%s']" % id).click()
+         # row = wd.find_element_by_id(id)
+         # cell = row.find_elements_by_tag_name("td")[7]
+         # cell.find_element_by_tag_name("a").click()
+
 
     def open_contact_to_view_by_index(self, index):
          wd = self.app.wd
@@ -124,6 +149,26 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         wd.find_elements_by_css_selector("div.msgbox")
         self.contact_cache = None
+
+    def delete_contact_by_id(self, id):
+        wd = self.app.wd
+        self.app.return_to_home()
+        self.select_contact_by_id(id)
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # self.accept_next_alert = True
+        wd.switch_to_alert().accept()
+        wd.find_elements_by_css_selector("div.msgbox")
+        self.contact_cache = None
+
+
+    # def delete_group_by_id(self, id):
+    #     wd = self.app.wd
+    #     self.open_groups_page()
+    #     self.select_group_by_id(id)
+    #     # submit group deletion
+    #     wd.find_element_by_name("delete").click()
+    #     self.return_to_groups_page()
+    #     self.group_cache = None
 
     def count(self):
         wd = self.app.wd
