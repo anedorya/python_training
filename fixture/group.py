@@ -52,14 +52,14 @@ class GroupHelper:
         self.return_to_groups_page()
         self.group_cache = None
 
-    def modify_group_by_id(self, id, group):
+    def modify_group_by_id(self, id, group_changes):
         wd = self.app.wd
         self.open_groups_page()
         self.select_group_by_id(id)
         # open modification form
         wd.find_element_by_name("edit").click()
         # edit group form
-        self.fill_info(group)
+        self.fill_info(group_changes)
         # confirm changes
         wd.find_element_by_name("update").click()
         self.return_to_groups_page()
