@@ -14,9 +14,6 @@ def test_add_group_db(app, db, check_ui, json_groups):
         if check_ui:
                 assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
 
-
-
-
 #
 # def test_add_group(app, json_groups):
 #         group = json_groups
