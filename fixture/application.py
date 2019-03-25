@@ -29,12 +29,13 @@ class Application:
 
     def open_home_page(self):
         wd = self.wd
-        if not wd.current_url.endswith("/addressbook/"):
+        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
             wd.get(self.base_url)
 
     def return_to_home(self):
         wd = self.wd
-        wd.find_element_by_link_text("home").click()
+        if not (wd.current_url.endswith("/addressbook/") and len(wd.find_elements_by_name("add")) > 0):
+            wd.find_element_by_link_text("home").click()
 
     def destroy(self):
         wd = self.wd

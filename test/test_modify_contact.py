@@ -10,6 +10,7 @@ def test_modify_contact_db(app, db, check_ui):
         old_contacts = db.get_contact_list()
         contact = random.choice(old_contacts)
         changed_contact = Info(firstname="111qwerty", lastname="111eeeeeeeeee")
+        changed_contact.id = contact.id
         app.contact.modify_contact_by_id(contact.id, changed_contact)
         assert len(old_contacts) == app.contact.count()
         new_contacts = db.get_contact_list()
