@@ -22,6 +22,15 @@ class ContactHelper:
         # wd.find_element_by_name("selected[]")
         self.contact_cache = None
 
+
+    def add_contact_to_group_by_id(self, id, info):
+        wd = self.app.wd
+        self.select_contact_by_id(id)
+        wd.find_element_by_name("to_group").click()
+        wd.find_element_by_name("add").click()
+        self.app.return_to_home()
+        self.contact_cache = None
+
     def modify(self):
         self.modify_contact_by_index(0)
 
