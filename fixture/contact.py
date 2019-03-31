@@ -36,7 +36,7 @@ class ContactHelper:
 
     def add_contact_to_group_by_id(self, contact_id, group_id):
         wd = self.app.wd
-        self.return_to_home()
+        self.app.return_to_home()
         self.select_contact_by_id(contact_id)
         Select(wd.find_element_by_name('to_group')).select_by_value(group_id)
         wd.find_element_by_name("add").click()
