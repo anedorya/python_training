@@ -16,7 +16,6 @@ class ORMfixture:
         contacts = Set(lambda: ORMfixture.ORMContact, table='address_in_groups', column='id', reverse="groups", lazy=True)
 
 
-
     class ORMContact(db.Entity):
         _table_ = 'addressbook'
         id = PrimaryKey(int, column='id')
@@ -24,6 +23,7 @@ class ORMfixture:
         lastname = Optional(str, column='lastname')
         deprecated = Optional(datetime, column='deprecated')
         groups = Set(lambda: ORMfixture.ORMGroup, table='address_in_groups', column='group_id', reverse="contacts", lazy=True   )
+
 
 
     def __init__(self, host, name, user, password):
@@ -39,7 +39,6 @@ class ORMfixture:
         return list(map(convert, groups))
 
 
-
     @db_session
     def get_group_list(self):
         return self.convert_groups_to_model(select(g for g in ORMfixture.ORMGroup))
@@ -49,6 +48,7 @@ class ORMfixture:
         def convert(contact):
             return Info(id=str(contact.id), firstname=contact.firstname, lastname=contact.lastname)
         return list(map(convert, contacts))
+
 
     @db_session
     def get_contact_list(self):
@@ -65,9 +65,3 @@ class ORMfixture:
         return self.convert_contacts_to_model(
             select(c for c in ORMfixture.ORMContact if c.deprecated is None and orm_group not in c.groups))
 
-
-
-
-    # def get_group_list(self):
-    #     with db_session:
-    #         return list(select(g for g in ORMfixture.ORMGroup))

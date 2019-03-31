@@ -22,10 +22,11 @@ class ContactHelper:
         # wd.find_element_by_name("selected[]")
         self.contact_cache = None
 
-
+    contacts_in_group = []
 
     def add_contact_to_group_by_index(self, index, group_id):
         wd = self.app.wd
+        self.app.return_to_home()
         self.select_contact_by_index(index)
         Select(wd.find_element_by_name('to_group')).select_by_value(group_id)
         wd.find_element_by_name("add").click()
@@ -33,32 +34,31 @@ class ContactHelper:
         self.contact_cache = None
 
 
-    def add_contact_to_group_by_id(self, id, group_id):
+    def add_contact_to_group_by_id(self, contact_id, group_id):
         wd = self.app.wd
-        self.select_contact_by_id(id)
+        self.return_to_home()
+        self.select_contact_by_id(contact_id)
         Select(wd.find_element_by_name('to_group')).select_by_value(group_id)
         wd.find_element_by_name("add").click()
         self.app.return_to_home()
         self.contact_cache = None
 
-    contacts_in_group = []
 
-    def get_list_of_contacts_in_group_by_id(self, group_id):
+    def remove_contact_from_group_by_id(self, contact_id, group_id):
+        wd = self.app.wd
+        self.open_group_with_contacts_page(group_id)
+        Select(wd.find_element_by_name('to_group')).select_by_value(group_id)
+        self.select_contact_by_id(contact_id)
+        Select(wd.find_element_by_name('to_group')).select_by_value(group_id)
+        wd.find_element_by_name("remove").click()
+        self.app.return_to_home()
+        self.contact_cache = None
+
+    def open_group_with_contacts_page(self, group_id):
         wd = self.app.wd
         self.app.return_to_home()
         Select(wd.find_element_by_name('group')).select_by_value(group_id)
-        for element in wd.find_elements_by_css_selector("tr[name='entry']"):
-            id = element.find_element_by_name("selected[]").get_attribute("value")
-            cells = element.find_elements_by_tag_name("td")
-            l_name = cells[1].text
-            f_name = cells[2].text
-            address = cells[3].text
-            all_phones = cells[5].text
-            all_emails = cells[4].text
-            self.contacts_in_group.append(Info(firstname=f_name, lastname=l_name, id=id, address=address,
-                                               all_phones_from_home_page=all_phones,
-                                               all_emails_from_home_page=all_emails))
-        return self.contacts_in_group
+
 
     def modify(self):
         self.modify_contact_by_index(0)
@@ -255,3 +255,20 @@ class ContactHelper:
         return Info(homedid=homedid, workdid=workdid,
                     cellular=cellular, secondaryphone=secondaryphone)
 
+
+    def get_list_of_contacts_in_group_by_id(self, group_id):
+        wd = self.app.wd
+        self.app.return_to_home()
+        self.open_group_with_contacts_page(group_id)
+        for element in wd.find_elements_by_css_selector("tr[name='entry']"):
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            cells = element.find_elements_by_tag_name("td")
+            l_name = cells[1].text
+            f_name = cells[2].text
+            address = cells[3].text
+            all_phones = cells[5].text
+            all_emails = cells[4].text
+            self.contacts_in_group.append(Info(firstname=f_name, lastname=l_name, id=id, address=address,
+                                               all_phones_from_home_page=all_phones,
+                                               all_emails_from_home_page=all_emails))
+        return self.contacts_in_group
