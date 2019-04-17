@@ -1,0 +1,25 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: assert [1:test::, 2:... iG l-8q, ...] == [1:test::, 2::... iG l-8q, ...]\n  At index 82 diff: None:name\\4ds:header Z\"q#4* meiil}Qt):footerNMjL ^= b != 84:name4ds:header Z\"q#4* meiil}Qt):footerNMjL ^= b\n  Use -v to get the full diff",
+      "children" : [ {
+        "name" : "test_add_group_db[None:name\\\\4ds:header Z\"q#4* meiil}Qt):footerNMjL ^= b]",
+        "uid" : "183af3c461aaf105",
+        "parentUid" : "14d9ed52bbf7b617a55e0d3b26f653df",
+        "status" : "failed",
+        "time" : {
+          "start" : 1555517367183,
+          "stop" : 1555517368528,
+          "duration" : 1345
+        },
+        "flaky" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "14d9ed52bbf7b617a55e0d3b26f653df"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

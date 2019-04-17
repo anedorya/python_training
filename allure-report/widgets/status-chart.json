@@ -1,0 +1,61 @@
+[ {
+  "uid" : "1355c54391ceb4bf",
+  "name" : "test_add_group_db[None:name(K^ ) 8G{:header :footerS`gyv R#~AMX ^:p]",
+  "time" : {
+    "start" : 1555517365886,
+    "stop" : 1555517367182,
+    "duration" : 1296
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8ad47cab491ce92f",
+  "name" : "test_add_group_db[None:name%h0:headera\\\\u:footere !Ucf U iG l-8q]",
+  "time" : {
+    "start" : 1555517368529,
+    "stop" : 1555517369882,
+    "duration" : 1353
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "183af3c461aaf105",
+  "name" : "test_add_group_db[None:name\\\\4ds:header Z\"q#4* meiil}Qt):footerNMjL ^= b]",
+  "time" : {
+    "start" : 1555517367183,
+    "stop" : 1555517368528,
+    "duration" : 1345
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "167129f973e60b25",
+  "name" : "test_add_group_db[None:name@;:headerz:footerX4M]!\\\\NR  T,6]",
+  "time" : {
+    "start" : 1555517364680,
+    "stop" : 1555517365884,
+    "duration" : 1204
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "94b9b8283456e12f",
+  "name" : "test_add_group_db[None:::]",
+  "time" : {
+    "start" : 1555517353134,
+    "stop" : 1555517363359,
+    "duration" : 10225
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "fc200bfcb6be1fa8",
+  "name" : "test_add_group_db[None:name\"!g2?D.P:headerc ?Y. zYQ2)7  s   #:footer[AQXa.m| Ct+c ]",
+  "time" : {
+    "start" : 1555517363360,
+    "stop" : 1555517364678,
+    "duration" : 1318
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

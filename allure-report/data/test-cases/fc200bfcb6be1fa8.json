@@ -1,0 +1,115 @@
+{
+  "uid" : "fc200bfcb6be1fa8",
+  "name" : "test_add_group_db[None:name\"!g2?D.P:headerc ?Y. zYQ2)7  s   #:footer[AQXa.m| Ct+c ]",
+  "fullName" : "test.test_add_group.test_add_group_db[None:name\"!g2?D.P:headerc ?Y. zYQ2)7  s   #:footer[AQXa.m| Ct+c ]",
+  "historyId" : "af2c3e52c6a77c81e5d92a7f6ba6b339",
+  "time" : {
+    "start" : 1555517363360,
+    "stop" : 1555517364678,
+    "duration" : 1318
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given a group list",
+      "time" : {
+        "start" : 1555517363445,
+        "stop" : 1555517363449,
+        "duration" : 4
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "When I add a group None:name\"!g2?D/P:headerc ?Y/ zYQ2)7  s   #:footer[AQXa/m| Ct+c  to the list",
+      "time" : {
+        "start" : 1555517363449,
+        "stop" : 1555517364672,
+        "duration" : 1223
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    }, {
+      "name" : "Then the new group list is equal to the old list with the added group",
+      "time" : {
+        "start" : 1555517364672,
+        "stop" : 1555517364678,
+        "duration" : 6
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "stepsCount" : 0,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "stepsCount" : 3,
+    "hasContent" : true
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "host",
+    "value" : "sam"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "severity",
+    "value" : "normal"
+  }, {
+    "name" : "thread",
+    "value" : "41068-MainThread"
+  }, {
+    "name" : "suite",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "testClass",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "testMethod",
+    "value" : "test_add_group_db[None:name\"!g2?D.P:headerc ?Y. zYQ2)7  s   #:footer[AQXa.m| Ct+c ]"
+  }, {
+    "name" : "package",
+    "value" : "test.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "fc200bfcb6be1fa8.json",
+  "parameterValues" : [ ]
+}
