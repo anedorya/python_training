@@ -55,6 +55,19 @@ def verify_contact_deleted(db, non_empty_contact_list, random_contact, app, chec
 
 
 
+# @then('the new contact list is equal to the old list with modified contact')
+# def verify_contact_modified(db, non_empty_contact_list, random_contact, name, last_name, app, check_ui):
+#     old_contacts = non_empty_contact_list
+#     new_contacts = db.get_contact_list()
+#     assert len(old_contacts) == len(new_contacts)
+#     changed_contact = Info(firstname=name, lastname=last_name)
+#     old_contacts.remove(random_contact)
+#     old_contacts.append(changed_contact)
+#     assert sorted(old_contacts, key=Info.id_or_max) == sorted(new_contacts, key=Info.id_or_max)
+#     if check_ui:
+#         assert sorted(new_contacts, key=Info.id_or_max) == sorted(app.contact.get_contact_list(), key=Info.id_or_max)
+
+
 @then('the new contact list is equal to the old list with modified contact')
 def verify_contact_modified(db, non_empty_contact_list, app):
     old_contacts = non_empty_contact_list
